@@ -51,9 +51,8 @@ bool RecursiveDivision::PhyPro::operator==(const PhyPro& other)
 }
 
 void RecursiveDivision::Divide(CreateGrid* grid, Point point, PhyPro dim)
-{
-    // TODO : Check algorithm
-    // It does not work properly
+{   
+    // Algorithm taken from below link
     // http://weblog.jamisbuck.org/2011/1/12/maze-generation-recursive-division-algorithm
 
     if(dim == PhyPro{SIZE_T_MAX, SIZE_T_MAX})
@@ -69,7 +68,7 @@ void RecursiveDivision::Divide(CreateGrid* grid, Point point, PhyPro dim)
     //Wall points
     Point wall_point;
     wall_point.mx = point.mx + (orientation_state ? 0 : Random(dim.mwidth-2));
-    wall_point.my = point.mx + (orientation_state ? Random(dim.mheight-2) : 0);
+    wall_point.my = point.my + (orientation_state ? Random(dim.mheight-2) : 0);
 
     //Passage through
     Point passage_point;
@@ -90,14 +89,14 @@ void RecursiveDivision::Divide(CreateGrid* grid, Point point, PhyPro dim)
     {
         //wall_point.mx = wall_point.mx > mdim.mwidth-1 ? mdim.mwidth-1 : wall_point.mx;
         //wall_point.my = wall_point.my > mdim.mheight-1 ? mdim.mheight-1 : wall_point.my;
-        grid->operator()(wall_point.mx, wall_point.my) |= (per_dir == Direction::SOUTH ? wall_point.mx != passage_point.mx : wall_point.my != passage_point.my);
+        grid->operator()(wall_point.mx, wall_point.my) |= ((wall_point.mx != passage_point.mx || wall_point.my != passage_point.my) ? per_dir == Direction::SOUTH : 0);
         wall_point.mx += wall_dir.mx;
         wall_point.my += wall_dir.my;
     }
 
     PhyPro new_dim1;
     new_dim1.mwidth = (orientation_state ? dim.mwidth : wall_point.mx - point.mx + 1);
-    new_dim1.mheight = (orientation_state ? point.my - point.my + 1 : dim.mheight);
+    new_dim1.mheight = (orientation_state ? wall_point.my - point.my + 1 : dim.mheight);
     Divide(grid, point, new_dim1);
 
     Point new_point;
