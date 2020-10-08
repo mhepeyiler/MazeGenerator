@@ -12,4 +12,7 @@ int main()
     auto maze = MazeFactory<RecursiveDivision>::create();
     maze->Generate(grid);
     std::cout << grid;
+    CreateGrid::del(grid);
+    MazeFactory<RecursiveDivision>::del(maze);
+    
 }
