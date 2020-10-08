@@ -13,6 +13,11 @@ struct MazeFactory
     {
         return new T; 
     }
+
+    static std::enable_if_t<std::is_base_of_v<Maze, T>> del(Maze* obj)
+    {
+        delete obj;
+    }
 };
 
 #endif

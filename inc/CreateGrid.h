@@ -45,12 +45,14 @@ public:
         return os;
     }
 
+    static void del(CreateGrid* obj)
+    {
+        delete obj;
+    }
+
 private:
     CreateGrid() = delete;
     CreateGrid(size_t sz) : vec{std::vector<std::vector<int>>(sz, std::vector<int>(sz,0))} {}
-    ~CreateGrid();
-    CreateGrid(const CreateGrid&);
-    CreateGrid& operator=(const CreateGrid&);
 
     static inline size_t msize{};
     static inline CreateGrid* instance{};
