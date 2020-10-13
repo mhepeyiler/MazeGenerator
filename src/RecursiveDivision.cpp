@@ -1,22 +1,5 @@
 #include "RecursiveDivision.h"
-#include <random>
-
-
-static bool Random()
-{
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> distrib(0,1);
-    return static_cast<bool>(distrib(gen));
-}
-
-static int Random(size_t val)
-{
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> distrib(0,val);
-    return static_cast<size_t>(distrib(gen));
-}
+#include "RandomHelper.h"
 
 void RecursiveDivision::Generate(CreateGrid* grid)
 {
