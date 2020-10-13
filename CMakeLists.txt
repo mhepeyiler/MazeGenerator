@@ -6,4 +6,5 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 project(MazeGenerator)
 include_directories(inc)
-add_executable(MazeGenerator main.cpp src/RecursiveDivision.cpp)
+add_executable(MazeGenerator main.cpp   src/RecursiveDivision.cpp
+                                        src/BinaryTree.cpp)

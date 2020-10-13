@@ -3,9 +3,7 @@
 #include <algorithm>
 #include "MazeFactory.h"
 #include "RecursiveDivision.h"
-#include "CreateGrid.h"
-
-
+#include "BinaryTree.h"
 int main()
 {
     size_t sz{};
@@ -14,7 +12,6 @@ int main()
 
     auto grid = CreateGrid::getInstance(static_cast<size_t>(sz));
     auto maze = MazeFactory<RecursiveDivision>::create();
-    
     
     maze->Generate(grid);
     std::cout << grid;
