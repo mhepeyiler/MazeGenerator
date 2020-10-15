@@ -8,16 +8,16 @@ int main()
 {
     size_t sz{};
     std::cout << "Please enter dim of grid : ";
-    std::cin >> sz;
+    //std::cin >> sz;
 
-    auto grid = CreateGrid::getInstance(static_cast<size_t>(sz));
-    auto maze = MazeFactory<RecursiveDivision>::create();
+    auto grid = CreateGrid::getInstance(static_cast<size_t>(5));
+    auto maze = MazeFactory<BinaryTree>::create();
     
     maze->Generate(grid);
     std::cout << grid;
     
     CreateGrid::del(grid);
-    MazeFactory<RecursiveDivision>::del(maze);
+    MazeFactory<BinaryTree>::del(maze);
     
     return 0;
 }
