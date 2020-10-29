@@ -2,22 +2,14 @@
 #define MAZEFACTORY_H_
 #include "Maze.h"
 #include <type_traits>
-
+#include <memory>
 
 
 template<typename T>
-struct MazeFactory
+std::enable_if_t<std::is_base_of_v<Maze, T>, std::unique_ptr<Maze>> MazeFactory()
 {
-    
-    static std::enable_if_t<std::is_base_of_v<Maze, T>,Maze*> create() 
-    {
-        return new T; 
-    }
+    return std::make_unique<T>();
+}
 
-    static std::enable_if_t<std::is_base_of_v<Maze, T>> del(Maze* obj)
-    {
-        delete obj;
-    }
-};
 
 #endif
