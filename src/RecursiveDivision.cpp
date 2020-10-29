@@ -70,8 +70,6 @@ void RecursiveDivision::Divide(Grid& grid, Point point, PhyPro dim)
 
     for(size_t i = 0; i < length; ++i)
     {
-        //wall_point.mx = wall_point.mx > mdim.mwidth-1 ? mdim.mwidth-1 : wall_point.mx;
-        //wall_point.my = wall_point.my > mdim.mheight-1 ? mdim.mheight-1 : wall_point.my;
         grid(wall_point.mx, wall_point.my) |= ((wall_point.mx != passage_point.mx || wall_point.my != passage_point.my) ? per_dir == Direction::SOUTH : 0);
         wall_point.mx += wall_dir.mx;
         wall_point.my += wall_dir.my;
