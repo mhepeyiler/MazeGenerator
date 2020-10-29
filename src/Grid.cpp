@@ -30,13 +30,13 @@ PUBLIC int& Grid::operator()(size_t i, size_t j)
     return vec.at(i).at(j);
 }
 
-FRIEND std::ostream& operator<<(std::ostream&os, Grid* gr)
+FRIEND std::ostream& operator<<(std::ostream&os, Grid& gr)
 {
-    for(size_t i = 0; i<gr->getSize(); ++i)
+    for(size_t i = 0; i<gr.getSize(); ++i)
     {
-        for(size_t j = 0; j<gr->getSize(); ++j)
+        for(size_t j = 0; j<gr.getSize(); ++j)
         {
-            os << gr->operator()(i,j);
+            os << gr.operator()(i,j);
         }
         os << '\n';
     }

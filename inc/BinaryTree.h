@@ -2,7 +2,7 @@
 #define BINARY_TREE_H_
 
 #include "Maze.h"
-#include "CreateGrid.h"
+#include "Grid.h"
 #include <map>
 #include <utility>
 
@@ -10,7 +10,7 @@ class BinaryTree : public Maze
 {
 
 public:
-    void Generate(CreateGrid*)override;
+    void Generate(Grid&)override;
 private:
     enum class Direction
     {

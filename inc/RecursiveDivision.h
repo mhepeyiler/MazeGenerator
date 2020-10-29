@@ -8,7 +8,7 @@ constexpr auto SIZE_T_MAX = std::numeric_limits<size_t>::max();
 class RecursiveDivision : public Maze
 {
 public:
-    void Generate(CreateGrid*) override;
+    void Generate(Grid& ) override;
 private:
     enum class Orientation : bool
     {
@@ -38,7 +38,7 @@ private:
     };
 
     friend Orientation ChooseOrientation(PhyPro);
-    void Divide(CreateGrid*, Point, PhyPro = PhyPro{SIZE_T_MAX, SIZE_T_MAX});
+    void Divide(Grid& , Point, PhyPro = PhyPro{SIZE_T_MAX, SIZE_T_MAX});
     PhyPro mdim;
     
 };

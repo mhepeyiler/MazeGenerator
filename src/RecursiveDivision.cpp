@@ -1,10 +1,10 @@
 #include "RecursiveDivision.h"
 #include "RandomHelper.h"
 
-void RecursiveDivision::Generate(CreateGrid* grid)
+void RecursiveDivision::Generate(Grid& grid)
 {
-    mdim.mheight = grid->getSize();
-    mdim.mwidth = grid->getSize();
+    mdim.mheight = grid.getSize();
+    mdim.mwidth = grid.getSize();
     Divide(grid, Point{});
 }
 
@@ -33,7 +33,7 @@ bool RecursiveDivision::PhyPro::operator==(const PhyPro& other)
     return mheight == other.mheight && mwidth == other.mwidth;
 }
 
-void RecursiveDivision::Divide(CreateGrid* grid, Point point, PhyPro dim)
+void RecursiveDivision::Divide(Grid& grid, Point point, PhyPro dim)
 {   
     // Algorithm taken from below link
     // http://weblog.jamisbuck.org/2011/1/12/maze-generation-recursive-division-algorithm
@@ -72,7 +72,7 @@ void RecursiveDivision::Divide(CreateGrid* grid, Point point, PhyPro dim)
     {
         //wall_point.mx = wall_point.mx > mdim.mwidth-1 ? mdim.mwidth-1 : wall_point.mx;
         //wall_point.my = wall_point.my > mdim.mheight-1 ? mdim.mheight-1 : wall_point.my;
-        grid->operator()(wall_point.mx, wall_point.my) |= ((wall_point.mx != passage_point.mx || wall_point.my != passage_point.my) ? per_dir == Direction::SOUTH : 0);
+        grid(wall_point.mx, wall_point.my) |= ((wall_point.mx != passage_point.mx || wall_point.my != passage_point.my) ? per_dir == Direction::SOUTH : 0);
         wall_point.mx += wall_dir.mx;
         wall_point.my += wall_dir.my;
     }

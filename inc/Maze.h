@@ -2,12 +2,13 @@
 #define MAZE_H_
 
 #include <vector>
-#include "CreateGrid.h"
+#include <memory>
+#include "Grid.h"
 
 class Maze
 {
 public:
-    virtual void Generate(CreateGrid*) = 0;
+    virtual void Generate(Grid&) = 0;
 };
 
 #endif
