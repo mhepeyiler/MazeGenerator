@@ -1,2 +1,2 @@
 # MazeGenerator
-Maze Generation Algorithm İmplementation
+Maze Generation Algorithms Implementation
