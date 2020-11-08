@@ -3,7 +3,7 @@
 #include <algorithm>
 #include "MazeFactory.h"
 #include "RecursiveDivision.h"
-#include "BinaryTree.h"
+
 
 int main()
 {
