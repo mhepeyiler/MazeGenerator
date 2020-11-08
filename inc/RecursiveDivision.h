@@ -1,5 +1,6 @@
 #ifndef RECURSIVE_DIVISION_H_
 #define RECURSIVE_DIVISION_H_
+
 #include "Maze.h"
 #include <limits>
 

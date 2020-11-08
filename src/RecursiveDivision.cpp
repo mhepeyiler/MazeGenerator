@@ -1,14 +1,18 @@
 #include "RecursiveDivision.h"
 #include "RandomHelper.h"
 
-void RecursiveDivision::Generate(Grid& grid)
+#define PUBLIC
+#define PRIVATE
+#define FRIEND
+
+PUBLIC void RecursiveDivision::Generate(Grid& grid)
 {
     mdim.mheight = grid.getSize();
     mdim.mwidth = grid.getSize();
     Divide(grid, Point{});
 }
 
-RecursiveDivision::Orientation ChooseOrientation(RecursiveDivision::PhyPro dim)
+FRIEND RecursiveDivision::Orientation ChooseOrientation(RecursiveDivision::PhyPro dim)
 {
     if(dim.mwidth < dim.mheight)
         return RecursiveDivision::Orientation::HORIZONTAL;
@@ -18,7 +22,7 @@ RecursiveDivision::Orientation ChooseOrientation(RecursiveDivision::PhyPro dim)
         return Random() ? RecursiveDivision::Orientation::HORIZONTAL : RecursiveDivision::Orientation::VERTICAL;
 }
 
-RecursiveDivision::PhyPro& RecursiveDivision::PhyPro::operator=(const RecursiveDivision::PhyPro& other)
+PRIVATE RecursiveDivision::PhyPro& RecursiveDivision::PhyPro::operator=(const RecursiveDivision::PhyPro& other)
 {
     if(&other != this)
     {    
@@ -28,12 +32,12 @@ RecursiveDivision::PhyPro& RecursiveDivision::PhyPro::operator=(const RecursiveD
     return *this;
 }
 
-bool RecursiveDivision::PhyPro::operator==(const PhyPro& other)
+PRIVATE bool RecursiveDivision::PhyPro::operator==(const PhyPro& other)
 {
     return mheight == other.mheight && mwidth == other.mwidth;
 }
 
-void RecursiveDivision::Divide(Grid& grid, Point point, PhyPro dim)
+PRIVATE void RecursiveDivision::Divide(Grid& grid, Point point, PhyPro dim)
 {   
     // Algorithm taken from below link
     // http://weblog.jamisbuck.org/2011/1/12/maze-generation-recursive-division-algorithm

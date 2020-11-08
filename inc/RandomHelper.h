@@ -18,6 +18,4 @@ inline bool Random()
 }
 
 
-
-
 #endif
